@@ -1,19 +1,22 @@
 package com.todo.modal;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 @Entity
 @Data
 @RestControllerAdvice
-public class Todo {
+@Table(name = "todo")
+public class Todo  {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
+
+    @Column(name = "title")
     private String title;
-    private boolean completed;
+
+    @Column(name = "is_completed")
+    private boolean isCompleted;
 }
